@@ -1,0 +1,35 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "planpassationms",
+  "relationships": [],
+  "fields": [
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "changelogDate": "20201202122620",
+  "dto": "mapstruct",
+  "searchEngine": false,
+  "service": "serviceImpl",
+  "entityTableName": "plan_passation",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "pagination",
+  "microserviceName": "planpassationms"
+}
