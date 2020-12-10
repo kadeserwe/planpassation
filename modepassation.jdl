@@ -1,0 +1,10 @@
+
+entity ModePassation {
+	/**
+	* The firstname attribute.
+	*/
+
+	libelle String required,
+    code String required,
+    description String required
+}

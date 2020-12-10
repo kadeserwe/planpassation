@@ -17,6 +17,7 @@
     <include file="config/liquibase/changelog/20201202122620_added_entity_PlanPassation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201202123550_added_entity_ParamDate.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201207200910_added_entity_Realisation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201210115034_added_entity_ModePassation.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20201207200910_added_entity_constraints_Realisation.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
