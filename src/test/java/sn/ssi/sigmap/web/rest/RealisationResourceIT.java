@@ -19,6 +19,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
@@ -45,6 +46,63 @@ public class RealisationResourceIT {
 
     private static final Integer DEFAULT_DELAIEXECUTION = 1;
     private static final Integer UPDATED_DELAIEXECUTION = 2;
+
+    private static final String DEFAULT_OBJET = "AAAAAAAAAA";
+    private static final String UPDATED_OBJET = "BBBBBBBBBB";
+
+    private static final BigDecimal DEFAULT_MONTANT = new BigDecimal(1);
+    private static final BigDecimal UPDATED_MONTANT = new BigDecimal(2);
+
+    private static final Integer DEFAULT_EXAMEN_DNCMP = 1;
+    private static final Integer UPDATED_EXAMEN_DNCMP = 2;
+
+    private static final Integer DEFAULT_EXAMEN_PTF = 1;
+    private static final Integer UPDATED_EXAMEN_PTF = 2;
+
+    private static final String DEFAULT_CHAPITRE_IMPUTATION = "AAAAAAAAAA";
+    private static final String UPDATED_CHAPITRE_IMPUTATION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_AUTORISATION_ENGAGEMENT = "AAAAAAAAAA";
+    private static final String UPDATED_AUTORISATION_ENGAGEMENT = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_DATE_RECEPTION_DOSSIER = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_RECEPTION_DOSSIER = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_NON_OBJECTION = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_NON_OBJECTION = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_AUTORISATION = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_AUTORISATION = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_RECEP_NON_OBJECTION = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_RECEP_NON_OBJECTION = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_RECEP_DOSS_CORRIGE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_RECEP_DOSS_CORRIGE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_PUB_PAR_PRMP = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_PUB_PAR_PRMP = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_OUVERTURE_PLIS = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_OUVERTURE_PLIS = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_RECEP_NON_OBJECT_OCMP = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_RECEP_NON_OBJECT_OCMP = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_RECEP_RAPPORT_EVA = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_RECEP_RAPPORT_EVA = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_RECEP_NON_OBJECT_PTF = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_RECEP_NON_OBJECT_PTF = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_EXAMEN_JURIDIQUE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_EXAMEN_JURIDIQUE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_NOTIF_CONTRAT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_NOTIF_CONTRAT = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_APPROBATION_CONTRAT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_APPROBATION_CONTRAT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private RealisationRepository realisationRepository;
@@ -73,7 +131,26 @@ public class RealisationResourceIT {
         Realisation realisation = new Realisation()
             .libelle(DEFAULT_LIBELLE)
             .dateAttribution(DEFAULT_DATE_ATTRIBUTION)
-            .delaiexecution(DEFAULT_DELAIEXECUTION);
+            .delaiexecution(DEFAULT_DELAIEXECUTION)
+            .objet(DEFAULT_OBJET)
+            .montant(DEFAULT_MONTANT)
+            .examenDncmp(DEFAULT_EXAMEN_DNCMP)
+            .examenPtf(DEFAULT_EXAMEN_PTF)
+            .chapitreImputation(DEFAULT_CHAPITRE_IMPUTATION)
+            .autorisationEngagement(DEFAULT_AUTORISATION_ENGAGEMENT)
+            .dateReceptionDossier(DEFAULT_DATE_RECEPTION_DOSSIER)
+            .dateNonObjection(DEFAULT_DATE_NON_OBJECTION)
+            .dateAutorisation(DEFAULT_DATE_AUTORISATION)
+            .dateRecepNonObjection(DEFAULT_DATE_RECEP_NON_OBJECTION)
+            .dateRecepDossCorrige(DEFAULT_DATE_RECEP_DOSS_CORRIGE)
+            .datePubParPrmp(DEFAULT_DATE_PUB_PAR_PRMP)
+            .dateOuverturePlis(DEFAULT_DATE_OUVERTURE_PLIS)
+            .dateRecepNonObjectOcmp(DEFAULT_DATE_RECEP_NON_OBJECT_OCMP)
+            .dateRecepRapportEva(DEFAULT_DATE_RECEP_RAPPORT_EVA)
+            .dateRecepNonObjectPtf(DEFAULT_DATE_RECEP_NON_OBJECT_PTF)
+            .dateExamenJuridique(DEFAULT_DATE_EXAMEN_JURIDIQUE)
+            .dateNotifContrat(DEFAULT_DATE_NOTIF_CONTRAT)
+            .dateApprobationContrat(DEFAULT_DATE_APPROBATION_CONTRAT);
         // Add required entity
         PlanPassation planPassation;
         if (TestUtil.findAll(em, PlanPassation.class).isEmpty()) {
@@ -96,7 +173,26 @@ public class RealisationResourceIT {
         Realisation realisation = new Realisation()
             .libelle(UPDATED_LIBELLE)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
-            .delaiexecution(UPDATED_DELAIEXECUTION);
+            .delaiexecution(UPDATED_DELAIEXECUTION)
+            .objet(UPDATED_OBJET)
+            .montant(UPDATED_MONTANT)
+            .examenDncmp(UPDATED_EXAMEN_DNCMP)
+            .examenPtf(UPDATED_EXAMEN_PTF)
+            .chapitreImputation(UPDATED_CHAPITRE_IMPUTATION)
+            .autorisationEngagement(UPDATED_AUTORISATION_ENGAGEMENT)
+            .dateReceptionDossier(UPDATED_DATE_RECEPTION_DOSSIER)
+            .dateNonObjection(UPDATED_DATE_NON_OBJECTION)
+            .dateAutorisation(UPDATED_DATE_AUTORISATION)
+            .dateRecepNonObjection(UPDATED_DATE_RECEP_NON_OBJECTION)
+            .dateRecepDossCorrige(UPDATED_DATE_RECEP_DOSS_CORRIGE)
+            .datePubParPrmp(UPDATED_DATE_PUB_PAR_PRMP)
+            .dateOuverturePlis(UPDATED_DATE_OUVERTURE_PLIS)
+            .dateRecepNonObjectOcmp(UPDATED_DATE_RECEP_NON_OBJECT_OCMP)
+            .dateRecepRapportEva(UPDATED_DATE_RECEP_RAPPORT_EVA)
+            .dateRecepNonObjectPtf(UPDATED_DATE_RECEP_NON_OBJECT_PTF)
+            .dateExamenJuridique(UPDATED_DATE_EXAMEN_JURIDIQUE)
+            .dateNotifContrat(UPDATED_DATE_NOTIF_CONTRAT)
+            .dateApprobationContrat(UPDATED_DATE_APPROBATION_CONTRAT);
         // Add required entity
         PlanPassation planPassation;
         if (TestUtil.findAll(em, PlanPassation.class).isEmpty()) {
@@ -133,6 +229,25 @@ public class RealisationResourceIT {
         assertThat(testRealisation.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
         assertThat(testRealisation.getDateAttribution()).isEqualTo(DEFAULT_DATE_ATTRIBUTION);
         assertThat(testRealisation.getDelaiexecution()).isEqualTo(DEFAULT_DELAIEXECUTION);
+        assertThat(testRealisation.getObjet()).isEqualTo(DEFAULT_OBJET);
+        assertThat(testRealisation.getMontant()).isEqualTo(DEFAULT_MONTANT);
+        assertThat(testRealisation.getExamenDncmp()).isEqualTo(DEFAULT_EXAMEN_DNCMP);
+        assertThat(testRealisation.getExamenPtf()).isEqualTo(DEFAULT_EXAMEN_PTF);
+        assertThat(testRealisation.getChapitreImputation()).isEqualTo(DEFAULT_CHAPITRE_IMPUTATION);
+        assertThat(testRealisation.getAutorisationEngagement()).isEqualTo(DEFAULT_AUTORISATION_ENGAGEMENT);
+        assertThat(testRealisation.getDateReceptionDossier()).isEqualTo(DEFAULT_DATE_RECEPTION_DOSSIER);
+        assertThat(testRealisation.getDateNonObjection()).isEqualTo(DEFAULT_DATE_NON_OBJECTION);
+        assertThat(testRealisation.getDateAutorisation()).isEqualTo(DEFAULT_DATE_AUTORISATION);
+        assertThat(testRealisation.getDateRecepNonObjection()).isEqualTo(DEFAULT_DATE_RECEP_NON_OBJECTION);
+        assertThat(testRealisation.getDateRecepDossCorrige()).isEqualTo(DEFAULT_DATE_RECEP_DOSS_CORRIGE);
+        assertThat(testRealisation.getDatePubParPrmp()).isEqualTo(DEFAULT_DATE_PUB_PAR_PRMP);
+        assertThat(testRealisation.getDateOuverturePlis()).isEqualTo(DEFAULT_DATE_OUVERTURE_PLIS);
+        assertThat(testRealisation.getDateRecepNonObjectOcmp()).isEqualTo(DEFAULT_DATE_RECEP_NON_OBJECT_OCMP);
+        assertThat(testRealisation.getDateRecepRapportEva()).isEqualTo(DEFAULT_DATE_RECEP_RAPPORT_EVA);
+        assertThat(testRealisation.getDateRecepNonObjectPtf()).isEqualTo(DEFAULT_DATE_RECEP_NON_OBJECT_PTF);
+        assertThat(testRealisation.getDateExamenJuridique()).isEqualTo(DEFAULT_DATE_EXAMEN_JURIDIQUE);
+        assertThat(testRealisation.getDateNotifContrat()).isEqualTo(DEFAULT_DATE_NOTIF_CONTRAT);
+        assertThat(testRealisation.getDateApprobationContrat()).isEqualTo(DEFAULT_DATE_APPROBATION_CONTRAT);
     }
 
     @Test
@@ -198,6 +313,346 @@ public class RealisationResourceIT {
 
     @Test
     @Transactional
+    public void checkExamenDncmpIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setExamenDncmp(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkExamenPtfIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setExamenPtf(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkChapitreImputationIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setChapitreImputation(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkAutorisationEngagementIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setAutorisationEngagement(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateReceptionDossierIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateReceptionDossier(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateNonObjectionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateNonObjection(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateAutorisationIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateAutorisation(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateRecepNonObjectionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateRecepNonObjection(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateRecepDossCorrigeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateRecepDossCorrige(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDatePubParPrmpIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDatePubParPrmp(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateOuverturePlisIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateOuverturePlis(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateRecepNonObjectOcmpIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateRecepNonObjectOcmp(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateRecepRapportEvaIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateRecepRapportEva(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateRecepNonObjectPtfIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateRecepNonObjectPtf(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateExamenJuridiqueIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateExamenJuridique(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateNotifContratIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateNotifContrat(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDateApprobationContratIsRequired() throws Exception {
+        int databaseSizeBeforeTest = realisationRepository.findAll().size();
+        // set the field null
+        realisation.setDateApprobationContrat(null);
+
+        // Create the Realisation, which fails.
+        RealisationDTO realisationDTO = realisationMapper.toDto(realisation);
+
+
+        restRealisationMockMvc.perform(post("/api/realisations").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(realisationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Realisation> realisationList = realisationRepository.findAll();
+        assertThat(realisationList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllRealisations() throws Exception {
         // Initialize the database
         realisationRepository.saveAndFlush(realisation);
@@ -209,7 +664,26 @@ public class RealisationResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(realisation.getId().intValue())))
             .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE)))
             .andExpect(jsonPath("$.[*].dateAttribution").value(hasItem(DEFAULT_DATE_ATTRIBUTION.toString())))
-            .andExpect(jsonPath("$.[*].delaiexecution").value(hasItem(DEFAULT_DELAIEXECUTION)));
+            .andExpect(jsonPath("$.[*].delaiexecution").value(hasItem(DEFAULT_DELAIEXECUTION)))
+            .andExpect(jsonPath("$.[*].objet").value(hasItem(DEFAULT_OBJET)))
+            .andExpect(jsonPath("$.[*].montant").value(hasItem(DEFAULT_MONTANT.intValue())))
+            .andExpect(jsonPath("$.[*].examenDncmp").value(hasItem(DEFAULT_EXAMEN_DNCMP)))
+            .andExpect(jsonPath("$.[*].examenPtf").value(hasItem(DEFAULT_EXAMEN_PTF)))
+            .andExpect(jsonPath("$.[*].chapitreImputation").value(hasItem(DEFAULT_CHAPITRE_IMPUTATION)))
+            .andExpect(jsonPath("$.[*].autorisationEngagement").value(hasItem(DEFAULT_AUTORISATION_ENGAGEMENT)))
+            .andExpect(jsonPath("$.[*].dateReceptionDossier").value(hasItem(DEFAULT_DATE_RECEPTION_DOSSIER.toString())))
+            .andExpect(jsonPath("$.[*].dateNonObjection").value(hasItem(DEFAULT_DATE_NON_OBJECTION.toString())))
+            .andExpect(jsonPath("$.[*].dateAutorisation").value(hasItem(DEFAULT_DATE_AUTORISATION.toString())))
+            .andExpect(jsonPath("$.[*].dateRecepNonObjection").value(hasItem(DEFAULT_DATE_RECEP_NON_OBJECTION.toString())))
+            .andExpect(jsonPath("$.[*].dateRecepDossCorrige").value(hasItem(DEFAULT_DATE_RECEP_DOSS_CORRIGE.toString())))
+            .andExpect(jsonPath("$.[*].datePubParPrmp").value(hasItem(DEFAULT_DATE_PUB_PAR_PRMP.toString())))
+            .andExpect(jsonPath("$.[*].dateOuverturePlis").value(hasItem(DEFAULT_DATE_OUVERTURE_PLIS.toString())))
+            .andExpect(jsonPath("$.[*].dateRecepNonObjectOcmp").value(hasItem(DEFAULT_DATE_RECEP_NON_OBJECT_OCMP.toString())))
+            .andExpect(jsonPath("$.[*].dateRecepRapportEva").value(hasItem(DEFAULT_DATE_RECEP_RAPPORT_EVA.toString())))
+            .andExpect(jsonPath("$.[*].dateRecepNonObjectPtf").value(hasItem(DEFAULT_DATE_RECEP_NON_OBJECT_PTF.toString())))
+            .andExpect(jsonPath("$.[*].dateExamenJuridique").value(hasItem(DEFAULT_DATE_EXAMEN_JURIDIQUE.toString())))
+            .andExpect(jsonPath("$.[*].dateNotifContrat").value(hasItem(DEFAULT_DATE_NOTIF_CONTRAT.toString())))
+            .andExpect(jsonPath("$.[*].dateApprobationContrat").value(hasItem(DEFAULT_DATE_APPROBATION_CONTRAT.toString())));
     }
     
     @Test
@@ -225,7 +699,26 @@ public class RealisationResourceIT {
             .andExpect(jsonPath("$.id").value(realisation.getId().intValue()))
             .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE))
             .andExpect(jsonPath("$.dateAttribution").value(DEFAULT_DATE_ATTRIBUTION.toString()))
-            .andExpect(jsonPath("$.delaiexecution").value(DEFAULT_DELAIEXECUTION));
+            .andExpect(jsonPath("$.delaiexecution").value(DEFAULT_DELAIEXECUTION))
+            .andExpect(jsonPath("$.objet").value(DEFAULT_OBJET))
+            .andExpect(jsonPath("$.montant").value(DEFAULT_MONTANT.intValue()))
+            .andExpect(jsonPath("$.examenDncmp").value(DEFAULT_EXAMEN_DNCMP))
+            .andExpect(jsonPath("$.examenPtf").value(DEFAULT_EXAMEN_PTF))
+            .andExpect(jsonPath("$.chapitreImputation").value(DEFAULT_CHAPITRE_IMPUTATION))
+            .andExpect(jsonPath("$.autorisationEngagement").value(DEFAULT_AUTORISATION_ENGAGEMENT))
+            .andExpect(jsonPath("$.dateReceptionDossier").value(DEFAULT_DATE_RECEPTION_DOSSIER.toString()))
+            .andExpect(jsonPath("$.dateNonObjection").value(DEFAULT_DATE_NON_OBJECTION.toString()))
+            .andExpect(jsonPath("$.dateAutorisation").value(DEFAULT_DATE_AUTORISATION.toString()))
+            .andExpect(jsonPath("$.dateRecepNonObjection").value(DEFAULT_DATE_RECEP_NON_OBJECTION.toString()))
+            .andExpect(jsonPath("$.dateRecepDossCorrige").value(DEFAULT_DATE_RECEP_DOSS_CORRIGE.toString()))
+            .andExpect(jsonPath("$.datePubParPrmp").value(DEFAULT_DATE_PUB_PAR_PRMP.toString()))
+            .andExpect(jsonPath("$.dateOuverturePlis").value(DEFAULT_DATE_OUVERTURE_PLIS.toString()))
+            .andExpect(jsonPath("$.dateRecepNonObjectOcmp").value(DEFAULT_DATE_RECEP_NON_OBJECT_OCMP.toString()))
+            .andExpect(jsonPath("$.dateRecepRapportEva").value(DEFAULT_DATE_RECEP_RAPPORT_EVA.toString()))
+            .andExpect(jsonPath("$.dateRecepNonObjectPtf").value(DEFAULT_DATE_RECEP_NON_OBJECT_PTF.toString()))
+            .andExpect(jsonPath("$.dateExamenJuridique").value(DEFAULT_DATE_EXAMEN_JURIDIQUE.toString()))
+            .andExpect(jsonPath("$.dateNotifContrat").value(DEFAULT_DATE_NOTIF_CONTRAT.toString()))
+            .andExpect(jsonPath("$.dateApprobationContrat").value(DEFAULT_DATE_APPROBATION_CONTRAT.toString()));
     }
     @Test
     @Transactional
@@ -250,7 +743,26 @@ public class RealisationResourceIT {
         updatedRealisation
             .libelle(UPDATED_LIBELLE)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
-            .delaiexecution(UPDATED_DELAIEXECUTION);
+            .delaiexecution(UPDATED_DELAIEXECUTION)
+            .objet(UPDATED_OBJET)
+            .montant(UPDATED_MONTANT)
+            .examenDncmp(UPDATED_EXAMEN_DNCMP)
+            .examenPtf(UPDATED_EXAMEN_PTF)
+            .chapitreImputation(UPDATED_CHAPITRE_IMPUTATION)
+            .autorisationEngagement(UPDATED_AUTORISATION_ENGAGEMENT)
+            .dateReceptionDossier(UPDATED_DATE_RECEPTION_DOSSIER)
+            .dateNonObjection(UPDATED_DATE_NON_OBJECTION)
+            .dateAutorisation(UPDATED_DATE_AUTORISATION)
+            .dateRecepNonObjection(UPDATED_DATE_RECEP_NON_OBJECTION)
+            .dateRecepDossCorrige(UPDATED_DATE_RECEP_DOSS_CORRIGE)
+            .datePubParPrmp(UPDATED_DATE_PUB_PAR_PRMP)
+            .dateOuverturePlis(UPDATED_DATE_OUVERTURE_PLIS)
+            .dateRecepNonObjectOcmp(UPDATED_DATE_RECEP_NON_OBJECT_OCMP)
+            .dateRecepRapportEva(UPDATED_DATE_RECEP_RAPPORT_EVA)
+            .dateRecepNonObjectPtf(UPDATED_DATE_RECEP_NON_OBJECT_PTF)
+            .dateExamenJuridique(UPDATED_DATE_EXAMEN_JURIDIQUE)
+            .dateNotifContrat(UPDATED_DATE_NOTIF_CONTRAT)
+            .dateApprobationContrat(UPDATED_DATE_APPROBATION_CONTRAT);
         RealisationDTO realisationDTO = realisationMapper.toDto(updatedRealisation);
 
         restRealisationMockMvc.perform(put("/api/realisations").with(csrf())
@@ -265,6 +777,25 @@ public class RealisationResourceIT {
         assertThat(testRealisation.getLibelle()).isEqualTo(UPDATED_LIBELLE);
         assertThat(testRealisation.getDateAttribution()).isEqualTo(UPDATED_DATE_ATTRIBUTION);
         assertThat(testRealisation.getDelaiexecution()).isEqualTo(UPDATED_DELAIEXECUTION);
+        assertThat(testRealisation.getObjet()).isEqualTo(UPDATED_OBJET);
+        assertThat(testRealisation.getMontant()).isEqualTo(UPDATED_MONTANT);
+        assertThat(testRealisation.getExamenDncmp()).isEqualTo(UPDATED_EXAMEN_DNCMP);
+        assertThat(testRealisation.getExamenPtf()).isEqualTo(UPDATED_EXAMEN_PTF);
+        assertThat(testRealisation.getChapitreImputation()).isEqualTo(UPDATED_CHAPITRE_IMPUTATION);
+        assertThat(testRealisation.getAutorisationEngagement()).isEqualTo(UPDATED_AUTORISATION_ENGAGEMENT);
+        assertThat(testRealisation.getDateReceptionDossier()).isEqualTo(UPDATED_DATE_RECEPTION_DOSSIER);
+        assertThat(testRealisation.getDateNonObjection()).isEqualTo(UPDATED_DATE_NON_OBJECTION);
+        assertThat(testRealisation.getDateAutorisation()).isEqualTo(UPDATED_DATE_AUTORISATION);
+        assertThat(testRealisation.getDateRecepNonObjection()).isEqualTo(UPDATED_DATE_RECEP_NON_OBJECTION);
+        assertThat(testRealisation.getDateRecepDossCorrige()).isEqualTo(UPDATED_DATE_RECEP_DOSS_CORRIGE);
+        assertThat(testRealisation.getDatePubParPrmp()).isEqualTo(UPDATED_DATE_PUB_PAR_PRMP);
+        assertThat(testRealisation.getDateOuverturePlis()).isEqualTo(UPDATED_DATE_OUVERTURE_PLIS);
+        assertThat(testRealisation.getDateRecepNonObjectOcmp()).isEqualTo(UPDATED_DATE_RECEP_NON_OBJECT_OCMP);
+        assertThat(testRealisation.getDateRecepRapportEva()).isEqualTo(UPDATED_DATE_RECEP_RAPPORT_EVA);
+        assertThat(testRealisation.getDateRecepNonObjectPtf()).isEqualTo(UPDATED_DATE_RECEP_NON_OBJECT_PTF);
+        assertThat(testRealisation.getDateExamenJuridique()).isEqualTo(UPDATED_DATE_EXAMEN_JURIDIQUE);
+        assertThat(testRealisation.getDateNotifContrat()).isEqualTo(UPDATED_DATE_NOTIF_CONTRAT);
+        assertThat(testRealisation.getDateApprobationContrat()).isEqualTo(UPDATED_DATE_APPROBATION_CONTRAT);
     }
 
     @Test
