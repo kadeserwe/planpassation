@@ -1,0 +1,31 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "planpassationms",
+  "relationships": [
+    {
+      "relationshipName": "sygTypeSourceFinancement",
+      "otherEntityName": "sygTypeSourceFinancement",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "libelle",
+      "otherEntityRelationshipName": "sygSourceFinancement"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "changelogDate": "20201218234736",
+  "dto": "mapstruct",
+  "searchEngine": false,
+  "service": "serviceImpl",
+  "entityTableName": "syg_source_financement",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": true,
+  "pagination": "pagination",
+  "microserviceName": "planpassationms"
+}
