@@ -56,12 +56,11 @@ public class CacheConfiguration {
             createCache(cm, sn.ssi.sigmap.domain.ParamDate.class.getName());
             createCache(cm, sn.ssi.sigmap.domain.Realisation.class.getName());
             createCache(cm, sn.ssi.sigmap.domain.ModePassation.class.getName());
-            createCache(cm, sn.ssi.sigmap.domain.Testtest.class.getName());
-            createCache(cm, sn.ssi.sigmap.domain.TypeDeMarche.class.getName());
-            createCache(cm, sn.ssi.sigmap.domain.TypeSourceDeFinancement.class.getName());
-            createCache(cm, sn.ssi.sigmap.domain.SourceDeFinancement.class.getName());
-            createCache(cm, sn.ssi.sigmap.domain.TypeService.class.getName());
             createCache(cm, sn.ssi.sigmap.domain.SygService.class.getName());
+            createCache(cm, sn.ssi.sigmap.domain.SygTypeMarche.class.getName());
+            createCache(cm, sn.ssi.sigmap.domain.SygTypeService.class.getName());
+            createCache(cm, sn.ssi.sigmap.domain.SygTypeSourceFinancement.class.getName());
+            createCache(cm, sn.ssi.sigmap.domain.SygSourceFinancement.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
