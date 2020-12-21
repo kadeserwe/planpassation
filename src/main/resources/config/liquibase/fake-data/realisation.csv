@@ -1,11 +1,11 @@
-id;libelle;date_attribution;delaiexecution;plan_passation_id
-1;Meadow JSON;2020-12-07;62398;1
-2;Turkish Lira Fiji Dollar Pizza;2020-12-06;79661;2
-3;envisioneer infrastructures haptic;2020-12-07;40442;3
-4;foreground context-sensitive;2020-12-07;30823;4
-5;bluetooth;2020-12-07;87354;5
-6;sky blue redefine content;2020-12-06;23390;6
-7;Colorado;2020-12-07;33117;7
-8;Personal Loan Account;2020-12-07;42865;8
-9;structure;2020-12-07;12668;9
-10;Compatible deposit Handcrafted;2020-12-07;1656;10
+id;libelle;date_attribution;delaiexecution;objet;montant;examen_dncmp;examen_ptf;chapitre_imputation;autorisation_engagement;date_reception_dossier;date_non_objection;date_autorisation;date_recep_non_objection;date_recep_doss_corrige;date_pub_par_prmp;date_ouverture_plis;date_recep_non_object_ocmp;date_recep_rapport_eva;date_recep_non_object_ptf;date_examen_juridique;date_notif_contrat;date_approbation_contrat;plan_passation_id
+1;Meadow JSON;2020-12-07;62398;Turkish Lira Fiji Dollar Pizza;93915;79661;83934;help-desk Soft;redundant Indiana;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-06;2020-12-06;2020-12-07;2020-12-07;1
+2;Administrator e-business;2020-12-07;31229;Soft core;62468;93450;79886;disintermediate FTP;Integration;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2
+3;Borders;2020-12-07;76845;Steel initiatives;25495;16954;46275;Illinois Small Plastic Sausages firewall;Orchestrator;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-06;2020-12-07;2020-12-07;2020-12-07;2020-12-07;3
+4;Handcrafted Rustic copying;2020-12-07;35494;plug-and-play;38133;35245;8239;Executive Wooden Director;Planner array architect;2020-12-07;2020-12-06;2020-12-07;2020-12-06;2020-12-07;2020-12-06;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;4
+5;Refined Metal Gloves transmit;2020-12-06;22281;redundant cohesive;92820;34273;68019;high-level Decentralized;Towels;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-06;5
+6;invoice JSON;2020-12-07;60069;PCI;84517;75356;75227;wireless Strategist;bandwidth internet solution;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;6
+7;exploit silver Steel;2020-12-07;67163;payment SAS Engineer;42467;84735;51800;Mandatory Azerbaijanian Manat bypass;brand homogeneous;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;7
+8;Alley;2020-12-07;87559;National Investment Account SQL;69531;60645;61705;unleash Small Rubber Hat;alarm;2020-12-06;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;8
+9;Iranian Rial synthesize SQL;2020-12-07;67558;Connecticut calculating;7846;42453;13231;Hawaii distributed magenta;generating invoice;2020-12-07;2020-12-06;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-06;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;9
+10;indexing;2020-12-07;22309;multi-byte Bedfordshire;69086;74391;51687;Steel;Generic Concrete Shirt;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-07;2020-12-06;2020-12-07;2020-12-06;10

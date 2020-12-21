@@ -56,6 +56,7 @@ public class CacheConfiguration {
             createCache(cm, sn.ssi.sigmap.domain.ParamDate.class.getName());
             createCache(cm, sn.ssi.sigmap.domain.Realisation.class.getName());
             createCache(cm, sn.ssi.sigmap.domain.ModePassation.class.getName());
+            createCache(cm, sn.ssi.sigmap.domain.Historique.class.getName());
             createCache(cm, sn.ssi.sigmap.domain.SygService.class.getName());
             createCache(cm, sn.ssi.sigmap.domain.SygTypeMarche.class.getName());
             createCache(cm, sn.ssi.sigmap.domain.SygTypeService.class.getName());

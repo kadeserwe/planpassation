@@ -18,6 +18,7 @@
     <include file="config/liquibase/changelog/20201202123550_added_entity_ParamDate.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201207200910_added_entity_Realisation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201210115034_added_entity_ModePassation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201216120200_added_entity_Historique.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201218232810_added_entity_SygTypeMarche.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201218233216_added_entity_SygTypeService.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201218233552_added_entity_SygTypeSourceFinancement.xml" relativeToChangelogFile="false"/>
@@ -25,6 +26,7 @@
     <include file="config/liquibase/changelog/20201218234736_added_entity_SygSourceFinancement.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20201207200910_added_entity_constraints_Realisation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201216120200_added_entity_constraints_Historique.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201218234011_added_entity_constraints_SygService.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201218234736_added_entity_constraints_SygSourceFinancement.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
